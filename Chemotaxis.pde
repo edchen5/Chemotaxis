@@ -1,5 +1,5 @@
-Bacteria [] bob = new Bacteria[30];
-boolean walk = true;
+Bacteria [] bob = new Bacteria[50];
+boolean diffWalk = false;
 
 void setup()   
 {     
@@ -27,13 +27,14 @@ void draw()
 
 void mousePressed()
 {
-  if(walk == true)
+
+ if(diffWalk == false)
   {
-    walk = false;
+    diffWalk = true;
   }
-  else if(walk == false)
+  else if(diffWalk == true)
   {
-    walk = true;
+    diffWalk = false;
   }
 }
 
@@ -48,15 +49,15 @@ class Bacteria
     myX = myY = 200;
   }
   
-    void walk()
-    {
+  void walk()
+  {
 
-    if(walk == true)
+    if(diffWalk == false)
     {
-        myX = myX + (int)(Math.random() * 6 - 3);
-        myY = myY + (int)(Math.random() * 6 - 3);
+      myX = myX + (int)(Math.random() * 6 - 3);
+      myY = myY + (int)(Math.random() * 6 - 3);
     }
-    else if(walk == false)
+    else if(diffWalk == true)
     {
       int dir = (int)(Math.random() * 4);
 
@@ -82,6 +83,7 @@ class Bacteria
   void show()
   {
     fill(r, g, b);
+    //stroke(r, g, b);
     ellipse(myX, myY, 1, 1);
     walk();
     if(keyPressed == true)
@@ -89,7 +91,7 @@ class Bacteria
       background(0);
       myX = 200;
       myY = 200;
-      walk = true;
+      diffWalk = false;
     }
   }
 }    
