@@ -1,11 +1,11 @@
 Bacteria [] bob = new Bacteria[50];
 boolean diffWalk = false;
+boolean diffStroke = false;
 
 void setup()   
 {     
   size(400, 400);
   background(0);
-  noStroke();
 
   for(int i = 0; i < bob.length; i++)
   {
@@ -18,7 +18,7 @@ void setup()
 
 void draw()   
 {    
-  
+
   for(int i = 0; i < bob.length; i++)
   {
     bob[i].show();
@@ -27,14 +27,27 @@ void draw()
 
 void mousePressed()
 {
-
+if(mouseButton == LEFT)
+{
  if(diffWalk == false)
   {
     diffWalk = true;
   }
-  else if(diffWalk == true)
+  else
   {
     diffWalk = false;
+  }
+}
+  if(mouseButton == RIGHT)
+  {
+    if(diffStroke == false)
+    {
+      diffStroke = true;
+    }
+    else
+    {
+      diffStroke = false;
+    }
   }
 }
 
@@ -57,8 +70,9 @@ class Bacteria
       myX = myX + (int)(Math.random() * 6 - 3);
       myY = myY + (int)(Math.random() * 6 - 3);
     }
-    else if(diffWalk == true)
+    else
     {
+
       int dir = (int)(Math.random() * 4);
 
       if(dir == 0)
@@ -79,19 +93,30 @@ class Bacteria
       }
     }
   }
-  
+
   void show()
   {
+
+    if(diffStroke == true)
+    {
+      stroke(r,g,b);
+    }
+    else 
+    {
+      noStroke();
+    }
+
     fill(r, g, b);
-    //stroke(r, g, b);
     ellipse(myX, myY, 1, 1);
     walk();
-    if(keyPressed == true)
+
+    if(keyPressed == true && key != 's')
     {
       background(0);
       myX = 200;
       myY = 200;
       diffWalk = false;
+      diffStroke = false;
     }
   }
 }    
