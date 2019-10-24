@@ -110,7 +110,7 @@ class Bacteria
     ellipse(myX, myY, 1, 1);
     walk();
 
-    if(keyPressed == true && key != 's')
+    if(keyPressed)
     {
       background(0);
       myX = 200;
