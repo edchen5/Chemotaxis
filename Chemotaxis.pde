@@ -67,8 +67,8 @@ class Bacteria
 
     if(diffWalk == false)
     {
-      myX = myX + (int)(Math.random() * 6 - 3);
-      myY = myY + (int)(Math.random() * 6 - 3);
+      myX += (int)(Math.random() * 6 - 3);
+      myY += (int)(Math.random() * 6 - 3);
     }
     else
     {
