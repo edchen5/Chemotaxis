@@ -6,7 +6,7 @@ void setup()
 {     
   size(400, 400);
   background(0);
-
+  frameRate(100);
   for(int i = 0; i < bob.length; i++)
   {
     bob[i] = new Bacteria();
