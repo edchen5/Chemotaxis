@@ -1,112 +1,77 @@
-Bacteria [] bob = new Bacteria[50];
+Bacteria [] bob = new Bacteria[100];
 boolean diffWalk = false;
 boolean diffStroke = false;
 
 void setup()   
 {     
-  size(400, 400);
+  size(500, 500);
   background(0);
   frameRate(100);
+
   for(int i = 0; i < bob.length; i++)
-  {
     bob[i] = new Bacteria();
-    bob[i].r = (int)(Math.random() * 255);
-    bob[i].g = (int)(Math.random() * 255);
-    bob[i].b = (int)(Math.random() * 255);
-  }
 }
 
 void draw()   
 {    
-
   for(int i = 0; i < bob.length; i++)
-  {
     bob[i].show();
-  }
 }
 
 void mousePressed()
 {
-if(mouseButton == LEFT)
-{
- if(diffWalk == false)
-  {
-    diffWalk = true;
-  }
-  else
-  {
-    diffWalk = false;
-  }
-}
+  if(mouseButton == LEFT)
+    diffWalk = !diffWalk;
+
   if(mouseButton == RIGHT)
-  {
-    if(diffStroke == false)
-    {
-      diffStroke = true;
-    }
-    else
-    {
-      diffStroke = false;
-    }
-  }
+    diffStroke = !diffStroke;
 }
 
 class Bacteria    
 {     
   
   int myX, myY;
-  int r, g, b;
+  int myR, myG, myB;
   
   Bacteria()
   {
-    myX = myY = 200;
+    myX = myY = 250;
+    myR = (int)(Math.random() * 255);
+    myG = (int)(Math.random() * 255);
+    myB = (int)(Math.random() * 255);
   }
   
   void walk()
   {
-
-    if(diffWalk == false)
+    if(!diffWalk)
     {
       myX += (int)(Math.random() * 6 - 3);
       myY += (int)(Math.random() * 6 - 3);
     }
     else
     {
-
       int dir = (int)(Math.random() * 4);
 
       if(dir == 0)
-      {
-        myX = myX + 3;
-      }
+        myX += 3;
       else if(dir == 1)
-      {
-        myX = myX - 3;
-      }
+        myX -= 3;
       else if(dir == 2)
-      {
-        myY = myY + 3;
-      }
+        myY += 3;
       else
-      {
-        myY = myY - 3;
-      }
+        myY -= 3;
     }
   }
 
   void show()
   {
 
-    if(diffStroke == true)
-    {
-      stroke(r,g,b);
-    }
+    if(diffStroke)
+      stroke(myR, myG, myB);
     else 
-    {
       noStroke();
-    }
 
-    fill(r, g, b);
+    fill(myR, myG, myB);
     ellipse(myX, myY, 1, 1);
     walk();
 
