@@ -1,4 +1,5 @@
 Bacteria [] bob = new Bacteria[100];
+
 boolean diffWalk = false;
 boolean diffStroke = false;
 
@@ -6,6 +7,7 @@ void setup()
 {     
   size(500, 500);
   background(0);
+
   frameRate(100);
 
   for(int i = 0; i < bob.length; i++)
@@ -35,7 +37,7 @@ class Bacteria
   
   Bacteria()
   {
-    myX = myY = 250;
+    myX = myY = height / 2;
     myR = (int)(Math.random() * 255);
     myG = (int)(Math.random() * 255);
     myB = (int)(Math.random() * 255);
@@ -73,13 +75,14 @@ class Bacteria
 
     fill(myR, myG, myB);
     ellipse(myX, myY, 1, 1);
+    
     walk();
 
     if(keyPressed)
     {
       background(0);
-      myX = 200;
-      myY = 200;
+      myX = width / 2;
+      myY = height / 2;
       diffWalk = false;
       diffStroke = false;
     }
